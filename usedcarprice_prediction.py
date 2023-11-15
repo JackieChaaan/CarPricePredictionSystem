@@ -156,6 +156,37 @@ final_data['Transmission'] = label_encoder.fit_transform(final_data['Transmissio
 #final data after label encoding
 final_data.head()
 
+import matplotlib.pyplot as plt
+
+# Create a figure with subplots for each feature
+fig, axes = plt.subplots(nrows=2, ncols=4, figsize=(15, 6))
+
+# Create box plots for each feature
+final_data['Year'].plot(kind='box', ax=axes[0, 0])
+final_data['Present_Price'].plot(kind='box', ax=axes[0, 1])
+final_data['Selling_Price'].plot(kind='box', ax=axes[0, 2])
+final_data['Driven_kms'].plot(kind='box', ax=axes[0, 3])
+final_data['Fuel_Type'].plot(kind='box', ax=axes[1, 0])
+final_data['Selling_type'].plot(kind='box', ax=axes[1, 1])
+final_data['Transmission'].plot(kind='box', ax=axes[1, 2])
+final_data['Owner'].plot(kind='box', ax=axes[1, 3])
+
+# Set titles for the subplots
+axes[0, 0].set_title('Year')
+axes[0, 1].set_title('Present Price')
+axes[0, 2].set_title('Selling Price')
+axes[0, 3].set_title('Kilometer Driven')
+axes[1, 0].set_title('Fuel Type')
+axes[1, 1].set_title('Selling Type')
+axes[1, 2].set_title('Transmission Type')
+axes[1, 3].set_title('Owner')
+
+# Adjust the layout to prevent overlap
+plt.tight_layout()
+
+# Display the plots
+plt.show()
+
 """#Sprint 2
 
 ###Split the data set for train and test
@@ -189,6 +220,16 @@ random=RandomForestRegressor()
 random.fit(X_train,y_train)
 #Prediction to the test dataset
 random_pred=random.predict(X_test)
+
+X_train
+
+y_train
+
+X_test
+
+y_test
+
+random_pred
 
 #Check the test score and train score to the RandomForestRegressor algorithm
 print(f'The Test_accuracy: {random.score(X_test,y_test)*100:.2f}')
